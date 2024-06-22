@@ -66,7 +66,7 @@ const App = () => {
         <div className='my-4'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni temporibus ad ullam dolorum. Quidem magnam quod omnis nemo illo perspiciatis aperiam inventore sunt cupiditate ex cum dolorum accusantium tempora laudantium, unde in harum veniam sit nam magni ab totam consequuntur odit reiciendis. Sunt culpa facilis similique tempora, ad neque delectus.
         </div>
-
+        <div className='text-3xl p-2 text-[#36a7a7] underline'>Qubit Count V/S Two Qubits Gate Error</div>
         <div className='flex flex-col items-center justify-center mt-14'>
           <ErrorChartComponent xField="twoQubitsGateError" yField="qubitCount" regularDataLimit={limit1} />
           <h1 className='font-bold mt-2'>Change the limit of the graph: </h1>
@@ -94,6 +94,8 @@ const App = () => {
         <div className='my-4'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni temporibus ad ullam dolorum. Quidem magnam quod omnis nemo illo perspiciatis aperiam inventore sunt cupiditate ex cum dolorum accusantium tempora laudantium, unde in harum veniam sit nam magni ab totam consequuntur odit reiciendis. Sunt culpa facilis similique tempora, ad neque delectus.
         </div>
+        <div className='text-3xl p-2 text-[#36a7a7] underline'>Qubit Count V/S One Qubits Gate Error</div>
+
         <div className='flex flex-col items-center justify-center mt-10'>
           <ErrorChartComponent xField="oneQubitGateError" yField="qubitCount" regularDataLimit={limit2} />
           <h1 className='font-bold mt-2'>Change the limit of the graph: </h1>
@@ -121,6 +123,8 @@ const App = () => {
         <div className='my-4'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni temporibus ad ullam dolorum. Quidem magnam quod omnis nemo illo perspiciatis aperiam inventore sunt cupiditate ex cum dolorum accusantium tempora laudantium, unde in harum veniam sit nam magni ab totam consequuntur odit reiciendis. Sunt culpa facilis similique tempora, ad neque delectus.
         </div>
+        <div className='text-3xl p-2 text-[#36a7a7] underline'>Time Stamp V/S Readout Error</div>
+
         <div className='flex flex-col items-center justify-center mt-10'>
           <ErrorChartComponent xField="readoutError" yField="timeStamp" regularDataLimit={limit3} />
           <h1 className='font-bold mt-2'>Change the limit of the graph: </h1>
@@ -149,6 +153,8 @@ const App = () => {
         <div className='my-4'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni temporibus ad ullam dolorum. Quidem magnam quod omnis nemo illo perspiciatis aperiam inventore sunt cupiditate ex cum dolorum accusantium tempora laudantium, unde in harum veniam sit nam magni ab totam consequuntur odit reiciendis. Sunt culpa facilis similique tempora, ad neque delectus.
         </div>
+        <div className='text-3xl p-2 text-[#36a7a7] underline'>Qubit Count V/S Maximum Error</div>
+
         <div className='flex flex-col items-center justify-center mt-10'>
           <MaxErrorChartComponent yField="qubitCount" regularDataLimit={limit4} />
           <h1 className='font-bold mt-2'>Change the limit of the graph: </h1>
@@ -176,6 +182,8 @@ const App = () => {
         <div className='my-4'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni temporibus ad ullam dolorum. Quidem magnam quod omnis nemo illo perspiciatis aperiam inventore sunt cupiditate ex cum dolorum accusantium tempora laudantium, unde in harum veniam sit nam magni ab totam consequuntur odit reiciendis. Sunt culpa facilis similique tempora, ad neque delectus.
         </div>
+        <div className='text-3xl p-2 text-[#36a7a7] underline'>Qubit Count V/S Readout Error</div>
+
         <div className='flex flex-col items-center justify-center mt-10'>
           <ErrorChartComponent xField="readoutError" yField="qubitCount" regularDataLimit={limit5} />
           <h1 className='font-bold mt-2'>Change the limit of the graph: </h1>
@@ -203,6 +211,8 @@ const App = () => {
         <div className='my-4'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni temporibus ad ullam dolorum. Quidem magnam quod omnis nemo illo perspiciatis aperiam inventore sunt cupiditate ex cum dolorum accusantium tempora laudantium, unde in harum veniam sit nam magni ab totam consequuntur odit reiciendis. Sunt culpa facilis similique tempora, ad neque delectus.
         </div>
+        <div className='text-3xl p-2 text-[#36a7a7] underline'>Qubit Count V/S log(T1 time)</div>
+
         <div className='flex flex-col items-center justify-center mt-10'>
           <LogChartComponent xField="coherenceTimeT1" yField="qubitCount" regularDataLimit={limit6} />
           <h1 className='font-bold mt-2'>Change the limit of the graph: </h1>
@@ -227,6 +237,8 @@ const App = () => {
             />
           </div>
         </div>
+        <div className='text-3xl p-2 text-[#36a7a7] underline'>Qubit Count V/S log(T2 time)</div>
+
         <div className='flex flex-col items-center justify-center mt-10'>
           <LogChartComponent xField="coherenceTimeT2" yField="qubitCount" regularDataLimit={limit7} />
           <h1 className='font-bold mt-2'>Change the limit of the graph: </h1>
