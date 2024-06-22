@@ -1,4 +1,4 @@
-// src/components/ChartComponent.jsx
+// src/components/MaxErrorChartComponent.jsx
 
 import React from 'react';
 import { Scatter } from 'react-chartjs-2';
@@ -14,13 +14,22 @@ import quantumSystemsData from '../data/data'; // Adjust import path as needed
 
 ChartJS.register(LinearScale, PointElement, Tooltip, Legend);
 
-const ChartComponent = ({ xField, yField, regularDataLimit }) => {
+const MaxErrorChartComponent = ({ yField, regularDataLimit }) => {
   // Prepare data for scatter plot based on the provided fields
-  const scatterData = quantumSystemsData.map(system => ({
-    x: system[xField],
-    y: system[yField],
-    name: system.name // Add any additional data you want to display in tooltips
-  }));
+  const scatterData = quantumSystemsData.map(system => {
+    const errors = [
+      { value: system.twoQubitsGateError, label: 'TwoQubitsGateError' },
+      { value: system.oneQubitGateError, label: 'OneQubitGateError' },
+      { value: system.readoutError, label: 'ReadoutError' }
+    ];
+    const maxError = errors.reduce((prev, current) => (prev.value > current.value) ? prev : current);
+    return {
+      x: maxError.value,
+      y: system[yField],
+      name: system.name,
+      errorLabel: maxError.label
+    };
+  });
 
   // Separate regular data and outlier data
   const regularData = scatterData.filter(point => point.x <= regularDataLimit);
@@ -30,7 +39,7 @@ const ChartComponent = ({ xField, yField, regularDataLimit }) => {
   const chartData = {
     datasets: [
       {
-        label: `${yField} vs. ${xField}`,
+        label: `${yField} vs. Max Error`,
         data: regularData,
         backgroundColor: 'rgba(75, 192, 192, 0.6)',
         borderColor: 'rgba(75, 192, 192, 1)',
@@ -61,7 +70,7 @@ const ChartComponent = ({ xField, yField, regularDataLimit }) => {
         },
         title: {
           display: true,
-          text: xField
+          text: 'Max Error'
         }
       },
       y: {
@@ -75,20 +84,16 @@ const ChartComponent = ({ xField, yField, regularDataLimit }) => {
       tooltip: {
         callbacks: {
           label: function(tooltipItem) {
+            let dataPoint;
             if (tooltipItem.datasetIndex === 0) {
-              const dataPoint = regularData[tooltipItem.dataIndex];
-              if (dataPoint) {
-                const xLabel = `${xField}: ${dataPoint.x.toFixed(7)}`;
-                const yLabel = `${yField}: ${dataPoint.y.toFixed(7)}`;
-                return [xLabel, yLabel, `Name: ${dataPoint.name || ''}`]; // Customize tooltip labels as per your data
-              }
+              dataPoint = regularData[tooltipItem.dataIndex];
             } else if (tooltipItem.datasetIndex === 1) {
-              const dataPoint = outlierData[tooltipItem.dataIndex];
-              if (dataPoint) {
-                const xLabel = `${xField}: ${dataPoint.x.toFixed(7)}`;
-                const yLabel = `${yField}: ${dataPoint.y.toFixed(7)}`;
-                return [xLabel, yLabel, `Name: ${dataPoint.name || ''}`]; // Customize tooltip labels as per your data
-              }
+              dataPoint = outlierData[tooltipItem.dataIndex];
+            }
+            if (dataPoint) {
+              const xLabel = `${dataPoint.errorLabel}: ${dataPoint.x.toFixed(7)}`;
+              const yLabel = `${yField}: ${dataPoint.y.toFixed(7)}`;
+              return [xLabel, yLabel, `Name: ${dataPoint.name || ''}`]; // Customize tooltip labels as per your data
             }
             return ''; // Handle case where data point is undefined
           }
@@ -119,4 +124,4 @@ const ChartComponent = ({ xField, yField, regularDataLimit }) => {
   );
 };
 
-export default ChartComponent;
+export default MaxErrorChartComponent;
