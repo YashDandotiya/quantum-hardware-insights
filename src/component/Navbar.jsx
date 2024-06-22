@@ -25,7 +25,7 @@ const Navbar = () => {
 					</div>
 					<ul>
 						<li>
-							<a href="mailto:kkant@iitd.ac.in" className="text-white hover:underline underline-offset-2 mr-2 md:mr-14 md:text-xl text-xs">
+							<a href="mailto:dandotiya.yash73@gmail.com" className="text-white hover:underline underline-offset-2 mr-2 md:mr-14 md:text-xl text-xs">
 								Contact&nbsp;Us
 							</a>
 						</li>
